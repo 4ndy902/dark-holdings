@@ -6,9 +6,10 @@
 
 <title>Dark Holdings</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     margin: 0;
     font-family: 'Playfair Display', serif;
@@ -17,12 +18,12 @@ body {
     overflow: hidden;
 }
 
-/* glow effect */
+/* glow mouse */
 #glow {
     position: fixed;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(0,255,150,0.15), transparent 70%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0,255,150,0.12), transparent 70%);
     pointer-events: none;
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -34,7 +35,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    padding: 80px;
+    padding: 100px;
 }
 
 /* LEFT SIDE */
@@ -45,32 +46,39 @@ body {
 .logo {
     width: 180px;
     margin-bottom: 30px;
-    filter: brightness(0.9) contrast(1.2);
+    filter: brightness(0.9);
 }
 
 h1 {
-    font-size: 72px;
+    font-size: 70px;
     letter-spacing: 6px;
     font-weight: 400;
     margin: 0;
 }
 
-.subtitle {
-    margin-top: 20px;
-    font-size: 14px;
-    letter-spacing: 3px;
+.line {
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #00ff99, transparent);
+    margin: 25px 0;
     opacity: 0.6;
+}
+
+.subtitle {
+    font-size: 13px;
+    letter-spacing: 3px;
+    opacity: 0.5;
 }
 
 /* RIGHT CARD */
 .card {
-    width: 380px;
+    width: 400px;
     padding: 40px;
-    border-radius: 12px;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(0,255,150,0.2);
-    box-shadow: 0 0 40px rgba(0,255,150,0.1);
+    box-shadow: 0 0 60px rgba(0,255,150,0.08);
 }
 
 .card h2 {
@@ -80,15 +88,17 @@ h1 {
     margin-bottom: 30px;
 }
 
+/* inputs */
 .input {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     border: 1px solid rgba(255,255,255,0.1);
     color: white;
 }
 
+/* button */
 .button {
     width: 100%;
     padding: 14px;
@@ -97,16 +107,23 @@ h1 {
     color: white;
     letter-spacing: 2px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
+.button:hover {
+    box-shadow: 0 0 20px rgba(0,255,150,0.4);
+}
+
+/* footer */
 .footer {
     position: absolute;
     bottom: 20px;
     width: 100%;
     text-align: center;
     font-size: 12px;
-    opacity: 0.5;
+    opacity: 0.4;
 }
+
 </style>
 </head>
 
@@ -117,22 +134,28 @@ h1 {
 <div class="container">
 
     <div class="left">
-        <img src="https://i.imgur.com/8QfQF7Q.png" class="logo">
+
+        <img src="horse_logo.png" class="logo">
 
         <h1>DARK<br>HOLDINGS</h1>
+
+        <div class="line"></div>
 
         <div class="subtitle">
             INVESTMENT & BUSINESS STRATEGY
         </div>
+
     </div>
 
     <div class="card">
+
         <h2>MEMBER ACCESS</h2>
 
         <input class="input" placeholder="Enter your access ID">
         <input class="input" type="password" placeholder="Enter your password">
 
-        <button class="button">ENTER</button>
+        <button class="button">ENTER PRIVATE OFFICE</button>
+
     </div>
 
 </div>
@@ -142,12 +165,14 @@ If you wish to join, please send an email request to info@dark-holdings.com
 </div>
 
 <script>
+
 const glow = document.getElementById("glow");
 
 document.addEventListener("mousemove", (e) => {
     glow.style.left = e.clientX + "px";
     glow.style.top = e.clientY + "px";
 });
+
 </script>
 
 </body>
