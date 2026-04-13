@@ -1,504 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dark Holdings | Investment & Business Strategy</title>
-  <style>
-    :root {
-      --bg: #010303;
-      --bg2: #03120d;
-      --panel: rgba(3, 16, 12, 0.82);
-      --panel-border: rgba(89, 151, 122, 0.16);
-      --text: #ece7df;
-      --muted: #7c9387;
-      --green: #1f5f4a;
-      --green2: #2b7a5f;
-      --glow: rgba(70, 193, 140, 0.18);
-      --field: rgba(5, 8, 8, 0.84);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * {
-      box-sizing: border-box;
-    }
+<title>Dark Holdings</title>
 
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      font-family: Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 72% 18%, rgba(22, 101, 73, 0.22), transparent 18%),
-        radial-gradient(circle at 83% 52%, rgba(22, 101, 73, 0.12), transparent 20%),
-        radial-gradient(circle at 38% 52%, rgba(22, 101, 73, 0.16), transparent 22%),
-        linear-gradient(90deg, #010303 0%, #02100c 50%, #04150f 100%);
-      overflow: hidden;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.045;
-      pointer-events: none;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: radial-gradient(circle at center, #031b14, #020d0a);
+    color: #eaeaea;
+    overflow: hidden;
+}
 
-    .cursor-glow {
-      position: fixed;
-      width: 460px;
-      height: 460px;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(55, 200, 137, 0.20) 0%, rgba(55, 200, 137, 0.08) 34%, rgba(55, 200, 137, 0) 72%);
-      mix-blend-mode: screen;
-      transition: left 0.07s linear, top 0.07s linear;
-    }
+/* glow effect */
+#glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,255,150,0.15), transparent 70%);
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
 
-    .page {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 40px;
-      align-items: center;
-      padding: 34px 56px 60px;
-    }
+/* layout */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 80px;
+}
 
-    .left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 24px;
-    }
+/* LEFT SIDE */
+.left {
+    max-width: 600px;
+}
 
-    .logo-wrap {
-      width: 220px;
-      margin: 0 0 26px 150px;
-      filter: drop-shadow(0 0 18px rgba(80, 170, 130, 0.16));
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
+.logo {
+    width: 180px;
+    margin-bottom: 30px;
+    filter: brightness(0.9) contrast(1.2);
+}
 
-    .logo-wrap:hover {
-      transform: translateY(-3px);
-      filter: drop-shadow(0 0 28px rgba(80, 170, 130, 0.28));
-    }
+h1 {
+    font-size: 72px;
+    letter-spacing: 6px;
+    font-weight: 400;
+    margin: 0;
+}
 
-    .brand {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(58px, 6vw, 90px);
-      font-weight: 400;
-      letter-spacing: 8px;
-      color: #ece7df;
-      line-height: 0.98;
-    }
+.subtitle {
+    margin-top: 20px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    opacity: 0.6;
+}
 
-    .line {
-      width: 305px;
-      height: 2px;
-      margin: 24px 0 32px 165px;
-      background: linear-gradient(to right, transparent, rgba(116, 255, 191, 0.85), transparent);
-      box-shadow: 0 0 18px rgba(116, 255, 191, 0.3);
-    }
+/* RIGHT CARD */
+.card {
+    width: 380px;
+    padding: 40px;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0,255,150,0.2);
+    box-shadow: 0 0 40px rgba(0,255,150,0.1);
+}
 
-    .sub {
-      margin: 0 0 0 115px;
-      color: #80998b;
-      text-transform: uppercase;
-      letter-spacing: 7px;
-      font-size: 14px;
-      white-space: nowrap;
-    }
+.card h2 {
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
 
-    .right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+}
 
-    .card {
-      width: 100%;
-      max-width: 470px;
-      min-height: 640px;
-      background: linear-gradient(180deg, rgba(3, 16, 12, 0.76), rgba(3, 13, 10, 0.9));
-      border: 1px solid rgba(102, 161, 134, 0.14);
-      border-radius: 12px;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.015),
-        0 0 42px rgba(0,0,0,0.36),
-        0 0 32px rgba(65, 180, 130, 0.08);
-      padding: 48px 46px;
-      backdrop-filter: blur(8px);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    }
+.button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #0f5132, #198754);
+    border: none;
+    color: white;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
 
-    .card:hover {
-      border-color: rgba(102, 161, 134, 0.24);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.02),
-        0 0 42px rgba(0,0,0,0.36),
-        0 0 52px rgba(65, 180, 130, 0.14);
-      transform: translateY(-2px);
-    }
-
-    .mini-logo {
-      width: 72px;
-      margin: 0 auto 26px;
-      display: block;
-      filter: drop-shadow(0 0 12px rgba(80, 170, 130, 0.12));
-    }
-
-    .access-title {
-      text-align: center;
-      margin: 0 0 42px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 18px;
-      letter-spacing: 3px;
-      font-weight: 400;
-      color: #d8d4cc;
-      text-transform: uppercase;
-    }
-
-    .field {
-      margin-bottom: 24px;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 12px;
-      color: #7b9388;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-    }
-
-    .field input {
-      width: 100%;
-      height: 54px;
-      border: 1px solid rgba(82, 131, 108, 0.12);
-      background: var(--field);
-      color: #d7d7d3;
-      border-radius: 2px;
-      padding: 0 16px;
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    }
-
-    .field input::placeholder {
-      color: #69776f;
-    }
-
-    .field input:focus,
-    .field input:hover {
-      border-color: rgba(110, 177, 146, 0.22);
-      box-shadow: 0 0 0 3px rgba(57, 132, 102, 0.08);
-      background: rgba(8, 11, 11, 0.88);
-    }
-
-    .row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin: 8px 0 30px;
-      color: #7d8a83;
-      font-size: 13px;
-    }
-
-    .remember {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .remember input {
-      accent-color: #4fb587;
-    }
-
-    .forgot {
-      color: #7d8a83;
-      text-decoration: none;
-      transition: color 0.25s ease;
-    }
-
-    .forgot:hover {
-      color: #b5c9be;
-    }
-
-    .btn {
-      width: 100%;
-      height: 54px;
-      border: 1px solid rgba(84, 149, 119, 0.18);
-      border-radius: 2px;
-      background: linear-gradient(90deg, rgba(27, 89, 67, 0.95), rgba(31, 98, 73, 0.95));
-      color: #e7e7e3;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 18px rgba(79, 181, 135, 0.18);
-      filter: brightness(1.06);
-    }
-
-    .card-footer {
-      margin-top: 42px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.55;
-      color: #65746d;
-    }
-
-    .site-footer {
-      position: fixed;
-      bottom: 14px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      color: #55635d;
-      font-size: 12px;
-      letter-spacing: 0.3px;
-      z-index: 2;
-    }
-
-    .site-footer a {
-      color: #8da899;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    @media (max-width: 1100px) {
-      html, body {
-        overflow: auto;
-      }
-
-      .page {
-        grid-template-columns: 1fr;
-        padding: 30px 24px 70px;
-      }
-
-      .left {
-        align-items: center;
-        text-align: center;
-        padding-left: 0;
-      }
-
-      .logo-wrap,
-      .line,
-      .sub {
-        margin-left: 0;
-      }
-
-      .brand {
-        font-size: 52px;
-      }
-
-      .sub {
-        white-space: normal;
-        letter-spacing: 5px;
-      }
-
-      .card {
-        min-height: auto;
-      }
-
-      .site-footer {
-        position: static;
-        padding-bottom: 20px;
-      }
-    }
-  </style>
+.footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.5;
+}
+</style>
 </head>
+
 <body>
-  <div class="cursor-glow" id="cursorGlow"></div>
 
-  <main class="page">
-    <section class="left">
-      <div class="logo-wrap">
-        <svg viewBox="0 0 240 250" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="shieldGrad" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stop-color="#2b2f31"/>
-              <stop offset="100%" stop-color="#090c0d"/>
-            </linearGradient>
-            <linearGradient id="metal" x1="0" x2="1">
-              <stop offset="0%" stop-color="#eef1f2"/>
-              <stop offset="50%" stop-color="#aeb5b7"/>
-              <stop offset="100%" stop-color="#f5f7f8"/>
-            </linearGradient>
-          </defs>
+<div id="glow"></div>
 
-          <g opacity="0.95">
-            <path d="M36 115 C20 92, 20 60, 36 38" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M28 98 C14 88, 12 76, 25 69" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M24 119 C10 108, 10 95, 24 88" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M28 139 C14 129, 14 115, 27 107" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M37 160 C22 151, 20 137, 33 128" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-          </g>
+<div class="container">
 
-          <g opacity="0.95" transform="translate(240,0) scale(-1,1)">
-            <path d="M36 115 C20 92, 20 60, 36 38" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M28 98 C14 88, 12 76, 25 69" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M24 119 C10 108, 10 95, 24 88" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M28 139 C14 129, 14 115, 27 107" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M37 160 C22 151, 20 137, 33 128" stroke="url(#metal)" stroke-width="8" fill="none" stroke-linecap="round"/>
-          </g>
+    <div class="left">
+        <img src="https://i.imgur.com/8QfQF7Q.png" class="logo">
 
-          <path d="M120 10 L192 42 L192 136 L120 214 L48 136 L48 42 Z" fill="url(#shieldGrad)" stroke="url(#metal)" stroke-width="6"/>
+        <h1>DARK<br>HOLDINGS</h1>
 
-          <path d="M118 57
-                   C130 48, 147 54, 154 66
-                   C160 77, 155 96, 146 103
-                   C137 111, 128 115, 125 125
-                   C120 144, 109 156, 95 167
-                   C102 149, 103 136, 97 122
-                   C91 107, 91 91, 99 79
-                   C104 71, 110 65, 118 57Z"
-                fill="url(#metal)" opacity="0.96"/>
-
-          <path d="M109 70
-                   C116 62, 122 59, 130 58
-                   C122 63, 118 68, 117 74
-                   C125 70, 132 69, 141 72
-                   C134 74, 128 79, 124 84
-                   C119 90, 114 94, 110 98
-                   C112 91, 113 85, 111 79
-                   C109 75, 108 73, 109 70Z"
-                fill="#0b0e0f" opacity="0.35"/>
-
-          <path d="M139 76
-                   C145 77, 149 82, 149 89
-                   C149 94, 145 99, 140 99
-                   C135 99, 131 95, 131 90
-                   C131 82, 134 77, 139 76Z"
-                fill="#d8dddf"/>
-        </svg>
-      </div>
-
-      <h1 class="brand">DARK HOLDINGS</h1>
-      <div class="line"></div>
-      <p class="sub">Investment &amp; Business Strategy</p>
-    </section>
-
-    <section class="right">
-      <div class="card">
-        <div class="mini-logo">
-          <svg viewBox="0 0 240 250" width="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="shieldGrad2" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stop-color="#2b2f31"/>
-                <stop offset="100%" stop-color="#090c0d"/>
-              </linearGradient>
-              <linearGradient id="metal2" x1="0" x2="1">
-                <stop offset="0%" stop-color="#eef1f2"/>
-                <stop offset="50%" stop-color="#aeb5b7"/>
-                <stop offset="100%" stop-color="#f5f7f8"/>
-              </linearGradient>
-            </defs>
-
-            <g opacity="0.95">
-              <path d="M36 115 C20 92, 20 60, 36 38" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-              <path d="M28 98 C14 88, 12 76, 25 69" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-              <path d="M24 119 C10 108, 10 95, 24 88" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-              <path d="M28 139 C14 129, 14 115, 27 107" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-              <path d="M37 160 C22 151, 20 137, 33 128" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            </g>
-
-            <g opacity="0.95" transform="translate(240,0) scale(-1,1)">
-              <path d="M36 115 C20 92, 20 60, 36 38" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-              <path d="M28 98 C14 88, 12 76, 25 69" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-              <path d="M24 119 C10 108, 10 95, 24 88" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-              <path d="M28 139 C14 129, 14 115, 27 107" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-              <path d="M37 160 C22 151, 20 137, 33 128" stroke="url(#metal2)" stroke-width="8" fill="none" stroke-linecap="round"/>
-            </g>
-
-            <path d="M120 10 L192 42 L192 136 L120 214 L48 136 L48 42 Z" fill="url(#shieldGrad2)" stroke="url(#metal2)" stroke-width="6"/>
-
-            <path d="M118 57
-                     C130 48, 147 54, 154 66
-                     C160 77, 155 96, 146 103
-                     C137 111, 128 115, 125 125
-                     C120 144, 109 156, 95 167
-                     C102 149, 103 136, 97 122
-                     C91 107, 91 91, 99 79
-                     C104 71, 110 65, 118 57Z"
-                  fill="url(#metal2)" opacity="0.96"/>
-
-            <path d="M109 70
-                     C116 62, 122 59, 130 58
-                     C122 63, 118 68, 117 74
-                     C125 70, 132 69, 141 72
-                     C134 74, 128 79, 124 84
-                     C119 90, 114 94, 110 98
-                     C112 91, 113 85, 111 79
-                     C109 75, 108 73, 109 70Z"
-                  fill="#0b0e0f" opacity="0.35"/>
-
-            <path d="M139 76
-                     C145 77, 149 82, 149 89
-                     C149 94, 145 99, 140 99
-                     C135 99, 131 95, 131 90
-                     C131 82, 134 77, 139 76Z"
-                  fill="#d8dddf"/>
-          </svg>
+        <div class="subtitle">
+            INVESTMENT & BUSINESS STRATEGY
         </div>
+    </div>
 
-        <h2 class="access-title">Member Access</h2>
+    <div class="card">
+        <h2>MEMBER ACCESS</h2>
 
-        <div class="field">
-          <label for="email">Member ID / Email</label>
-          <input id="email" type="text" placeholder="Enter your access ID" />
-        </div>
+        <input class="input" placeholder="Enter your access ID">
+        <input class="input" type="password" placeholder="Enter your password">
 
-        <div class="field">
-          <label for="password">Password</label>
-          <input id="password" type="password" placeholder="Enter your password" />
-        </div>
+        <button class="button">ENTER</button>
+    </div>
 
-        <div class="row">
-          <label class="remember">
-            <input type="checkbox" checked />
-            <span>Remember me</span>
-          </label>
-          <a class="forgot" href="#">Forgot password?</a>
-        </div>
+</div>
 
-        <button class="btn">Enter</button>
+<div class="footer">
+If you wish to join, please send an email request to info@dark-holdings.com
+</div>
 
-        <div class="card-footer">
-          Dark Holdings — Investment &amp; Strategy<br />
-          Access restricted to approved members
-        </div>
-      </div>
-    </section>
-  </main>
+<script>
+const glow = document.getElementById("glow");
 
-  <div class="site-footer">
-    If you wish to join, please send an email request to
-    <a href="mailto:info@dark-holdings.com">info@dark-holdings.com</a>
-  </div>
+document.addEventListener("mousemove", (e) => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
+</script>
 
-  <script>
-    const glow = document.getElementById("cursorGlow");
-    window.addEventListener("mousemove", (e) => {
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    });
-  </script>
 </body>
 </html>
