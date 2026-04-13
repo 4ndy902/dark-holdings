@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dark Holdings</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial';
+  background: radial-gradient(circle at 70% 30%, #0f3d2f, #050505);
+  color: white;
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left h1 {
+  font-size: 48px;
+  letter-spacing: 4px;
+}
+
+.left p {
+  color: #1f5f4a;
+  letter-spacing: 3px;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,255,150,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 0 60px rgba(0,255,150,0.2);
+}
+
+input {
+  display: block;
+  margin: 10px 0;
+  padding: 12px;
+  width: 250px;
+  background: #111;
+  border: none;
+  color: white;
+}
+
+button {
+  background: #1f5f4a;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  color: white;
+  cursor: pointer;
+}
+
+.footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="left">
+  <h1>DARK HOLDINGS</h1>
+  <p>INVESTMENT & BUSINESS STRATEGY</p>
+</div>
+
+<div class="right">
+  <div class="card">
+    <h3>Member Access</h3>
+    <input placeholder="Member ID / Email">
+    <input type="password" placeholder="Password">
+    <button>Enter</button>
+  </div>
+</div>
+
+<div class="footer">
+If you wish to join, please send an email request to info@dark-holdings.com
+</div>
+
+</body>
+</html>
